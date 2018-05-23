@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * @license Apache 2.0
@@ -7,8 +7,8 @@
 namespace Swagger\Processors;
 
 use Swagger\Annotations\Property;
-use Swagger\Annotations\Swagger;
-use Swagger\Annotations\Definition;
+use Swagger\Annotations\OpenApi;
+use Swagger\Annotations\Schema;
 use Swagger\Analysis;
 use Traversable;
 
@@ -19,7 +19,7 @@ class InheritProperties
 {
     public function __invoke(Analysis $analysis)
     {
-        $schemas = $analysis->getAnnotationsOfType('\Swagger\Annotations\Schema');
+        $schemas = $analysis->getAnnotationsOfType(Schema::class);
         foreach ($schemas as $schema) {
             if ($schema->_context->is('class')) {
                 $existing = [];

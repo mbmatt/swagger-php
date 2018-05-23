@@ -1,11 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * @license Apache 2.0
  */
 
-namespace Swaggertests;
+namespace SwaggerTests;
 
+use Swagger\Annotations\Operation;
 use Swagger\Processors\AugmentOperations;
 use Swagger\StaticAnalyser;
 
@@ -18,7 +19,7 @@ class AugmentOperationTest extends SwaggerTestCase
         $analysis->process([
             new AugmentOperations(),
         ]);
-        $operations = $analysis->getAnnotationsOfType('\Swagger\Annotations\Operation');
+        $operations = $analysis->getAnnotationsOfType(Operation::class);
 
         $this->assertSame('api/test1', $operations[0]->path);
         $this->assertSame('Example summary', $operations[0]->summary, 'Operation summary should be taken from phpDoc');

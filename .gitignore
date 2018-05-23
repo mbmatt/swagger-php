@@ -2,5 +2,5 @@
 /composer.lock
 /bin/*
 !/bin/swagger
+/openapi.json
 /swagger.json
-
